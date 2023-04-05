@@ -4,31 +4,12 @@
   
     
     <entry>
-      <title>小靳同学真帅啊</title>
-      <link href="/post/dc90e6f8.html"/>
-      <url>/post/dc90e6f8.html</url>
-      
-        <content type="html"><![CDATA[<p class='item-img' data-src='http://rsncre1bv.bkt.clouddn.com/1.jpg'><img src="http://rsncre1bv.bkt.clouddn.com/1.jpg"></p><p class='item-img' data-src='http://rsncre1bv.bkt.clouddn.com/2.jpg'><img src="http://rsncre1bv.bkt.clouddn.com/2.jpg"></p><p class='item-img' data-src='http://rsncre1bv.bkt.clouddn.com/3.jpg'><img src="http://rsncre1bv.bkt.clouddn.com/3.jpg"></p><p class='item-img' data-src='http://rsncre1bv.bkt.clouddn.com/4.jpg'><img src="http://rsncre1bv.bkt.clouddn.com/4.jpg"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>SQL注入</title>
       <link href="/post/e73517db.html"/>
       <url>/post/e73517db.html</url>
       
         <content type="html"><![CDATA[<h2 id="什么是SQL注入"><a href="#什么是SQL注入" class="headerlink" title="什么是SQL注入"></a>什么是SQL注入</h2><p>SQL 注入就是指 web应用程序对用户输入的数据合法性没有过滤或者是判断，前端传入的参数是攻击者可以控制，并且参数带入数据库的查询，攻击者可以通过构造恶意的 sql语句来实现 对数据库的任意操作。</p>]]></content>
       
-      
-      <categories>
-          
-          <category> 网络安全 </category>
-          
-      </categories>
       
       
         <tags>
