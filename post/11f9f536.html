@@ -6,8 +6,106 @@ if (window.localStorage.getItem('theme-mode') === 'dark') document.documentEleme
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.4.2"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>sqlmap使用方法</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-04-06T14:43:13.000Z" id="date"> 2023-04-06</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-04-06T14:45:34.379Z" id="updated"> 2023-04-06</time></div></span></div></div><hr><div id="post-content"><span id="more"></span>
-<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/9b44950b.html">← Next 无题</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/e73517db.html">SQL注入 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Glowworm</a></h1><div id="description"><p></p></div></div><div id="aside-block"></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+}</style><meta name="generator" content="Hexo 5.4.2"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>sqlmap使用方法</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-04-06T14:43:13.000Z" id="date"> 2023-04-06</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-04-08T17:06:17.807Z" id="updated"> 2023-04-09</time></div></span></div></div><hr><div id="post-content"><span id="more"></span>
+
+<h1 id="sqlmap简介"><a href="#sqlmap简介" class="headerlink" title="sqlmap简介"></a>sqlmap简介</h1><p>sqlmap是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL进行SQL注入。</p>
+<h1 id="用于数据库注入"><a href="#用于数据库注入" class="headerlink" title="用于数据库注入"></a>用于数据库注入</h1><ol>
+<li>猜解是否能注入</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url”</p>
+</blockquote>
+<ol start="2">
+<li>猜解库</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url” –dbs</p>
+</blockquote>
+<ol start="3">
+<li>猜解表</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url” –tables</p>
+</blockquote>
+<ol start="4">
+<li>根据猜解的表进行猜解表的字段(假如通过2得到了admin这个表)</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url” –columns -T admin</p>
+</blockquote>
+<ol start="5">
+<li>根据字段猜解内容(假如通过3得到字段为username和password)</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url” –dump -T admin -C “username,password”</p>
+</blockquote>
+<h1 id="用于cookie注入"><a href="#用于cookie注入" class="headerlink" title="用于cookie注入"></a>用于cookie注入</h1><ol>
+<li>cookie注入，猜解表</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url” –cookie “cookie” –table –level 2</p>
+</blockquote>
+<ol start="2">
+<li>猜解字段，(通过1的表猜解字段，假如表为admin)</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url” –cookie “cookie” –columns -T admin –level 2</p>
+</blockquote>
+<ol start="3">
+<li>猜解内容</li>
+</ol>
+<blockquote>
+<p>python sqlmap.py -u “url” –cookie “cookie” –dump -T admin -C “username,password” –level 2</p>
+</blockquote>
+<h1 id="post登录框注入"><a href="#post登录框注入" class="headerlink" title="post登录框注入"></a>post登录框注入</h1><ol>
+<li>浏览器打开目标地址</li>
+<li>burp抓包，拦截请求</li>
+<li>点击提交，burp会拦截post请求</li>
+<li>复制post请求头为post.txt，并放到sqlmap目录下</li>
+<li>运行sqlmap</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">step1：sqlmap <span class="operator">-</span>r [&quot;请求头文本&quot;]  <span class="operator">/</span><span class="operator">/</span>测试是否存在注入</span><br><span class="line">step2：sqlmap <span class="operator">-</span>r [&quot;请求头文本&quot;] <span class="comment">--current-db //查询当前数据库</span></span><br><span class="line">step3：sqlmap <span class="operator">-</span>r [&quot;请求头文本&quot;] <span class="operator">-</span>D [&quot;数据库名&quot;] <span class="comment">--tables //查询当前数据库的所有表</span></span><br><span class="line">step4：sqlmap <span class="operator">-</span>r [&quot;请求头文本&quot;] <span class="operator">-</span>D [&quot;数据库名&quot;] <span class="operator">-</span>T [&quot;表名&quot;] <span class="comment">--columns //查询指定库指定表的所有字段</span></span><br><span class="line">step5：sqlmap <span class="operator">-</span>r [&quot;请求头文本&quot;] <span class="operator">-</span>D [&quot;数据库名&quot;] <span class="operator">-</span>T [&quot;表名&quot;] <span class="operator">-</span>C [&quot;字段名&quot;] <span class="comment">--dump //打印出指定库指定表指定字段的所有字段内容</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="常见参数使用"><a href="#常见参数使用" class="headerlink" title="常见参数使用"></a>常见参数使用</h1><ul>
+<li>设置目标URL：</li>
+</ul>
+<blockquote>
+<p>参数：-u    每次只能扫描一个url<br>格式：sqlmap -u “url”</p>
+<p>参数：-m    从文本中获取多个目标扫描，但是每次只能有一个url<br>格式：sqlmap -m 1.txt、</p>
+<p>参数：-r    从文件中加载HTTP请求，这样的话，就不需要再去设定coolie，POST数据等值…..<br>格式：sqlmap -r 1.txt</p>
+</blockquote>
+<ul>
+<li>设置回显等级：</li>
+</ul>
+<blockquote>
+<p>参数：-v<br>0、只显示python错误以及严重的信息。<br>1、同时显示基本信息和警告信息。（默认等级）<br>2、同时显示debug信息。<br>3、同时显示注入的payload。<br>4、同时显示HTTP请求。<br>5、同时显示HTTP响应头。<br>6、同时显示HTTP响应页。</p>
+</blockquote>
+<ul>
+<li>设定探测等级：</li>
+</ul>
+<blockquote>
+<p>参数：–level<br>默认为1<br>level&gt;=2的时候就会测试HTTP Cookie<br>level&gt;=3的时候就会测试HTTP User-Agent/Referer头<br>level=5的时候会测试HTTP Host</p>
+</blockquote>
+<h1 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h1><h3 id="options类："><a href="#options类：" class="headerlink" title="options类："></a>options类：</h3><blockquote>
+<p>sqlmap –version    查看sqlmap版本信息.</p>
+<p>-h    查看功能参数(常用的)</p>
+<p>-hh　查看所有的参数 (如果有中文包 就最好了)</p>
+<p>-v　显示更详细的信息 一共7级, 从0-6.默认为1, 数值越大,信息显示越详细.</p>
+</blockquote>
+<h3 id="Target-指定目标"><a href="#Target-指定目标" class="headerlink" title="Target(指定目标):"></a>Target(指定目标):</h3><blockquote>
+<p>-d　直接连接数据库侦听端口,类似于把自己当一个客户端来连接.</p>
+<p>-u    指定url扫描,但url必须存在查询参数. 例: xxx.php?id=1 </p>
+<p>-l    指定logfile文件进行扫描,可以结合burp 把访问的记录保存成一个log文件, sqlmap可以直接加载burp保存到log文件进行扫描</p>
+<p>-x    以xml的形式提交一个站点地图给sqlmap(表示不理解..)</p>
+<p>-m    如果有多个url地址,可以把多个url保存成一个文本文件 -m可以加载文本文件逐个扫描</p>
+<p>-r    把http的请求头,body保存成一个文件 统一提交给sqlmap,sqlmap会读取内容进行拼接请求体</p>
+<p>-g    利用谷歌搜索引擎搭配正则来过滤你想要的</p>
+<p>-c    加载配置文件,配置文件可以指定扫描目标,扫描方式,扫描内容等等.加载了配置文件sqlmap就会根据文件内容进行特定的扫描</p>
+</blockquote>
+<h3 id="Request类参数"><a href="#Request类参数" class="headerlink" title="Request类参数"></a>Request类参数</h3><blockquote>
+<p>–data    提交的时候要携带的参数（get，post通用，最简单的post请求方式）</p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/9b44950b.html">← Next 无题</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/e73517db.html">SQL注入 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Glowworm</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlmap%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">sqlmap简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">用于数据库注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E4%BA%8Ecookie%E6%B3%A8%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">用于cookie注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#post%E7%99%BB%E5%BD%95%E6%A1%86%E6%B3%A8%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">post登录框注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%8F%82%E6%95%B0%E4%BD%BF%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">常见参数使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="toc-number">6.</span> <span class="toc-text">参数介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#options%E7%B1%BB%EF%BC%9A"><span class="toc-number">6.0.1.</span> <span class="toc-text">options类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Target-%E6%8C%87%E5%AE%9A%E7%9B%AE%E6%A0%87"><span class="toc-number">6.0.2.</span> <span class="toc-text">Target(指定目标):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Request%E7%B1%BB%E5%8F%82%E6%95%B0"><span class="toc-number">6.0.3.</span> <span class="toc-text">Request类参数</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
 document.querySelector('.lg-container')?.remove()
 lightGallery(document.getElementById('post-bg'), {
   plugins: [lgZoom,lgThumbnail],
