@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>web安全补充</title>
+      <link href="/post/e3a6827a.html"/>
+      <url>/post/e3a6827a.html</url>
+      
+        <content type="html"><![CDATA[<span id="more"></span><h1 id="web基础"><a href="#web基础" class="headerlink" title="web基础"></a>web基础</h1><h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><h1 id="RCE（远程代码执行）"><a href="#RCE（远程代码执行）" class="headerlink" title="RCE（远程代码执行）"></a>RCE（远程代码执行）</h1><h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h1 id="SSRF（服务器请求伪造）"><a href="#SSRF（服务器请求伪造）" class="headerlink" title="SSRF（服务器请求伪造）"></a>SSRF（服务器请求伪造）</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PHP特性</title>
       <link href="/post/44659fec.html"/>
       <url>/post/44659fec.html</url>
       
-        <content type="html"><![CDATA[<span id="more"></span><h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+        <content type="html"><![CDATA[<span id="more"></span><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><table><thead><tr><th>元字符</th><th>含义描述</th></tr></thead><tbody><tr><td>\d</td><td>匹配任意一个十进制数字，等价于[0-9]</td></tr><tr><td>\D</td><td>匹配任意一个除十进制数字以外的字符，等价于[^0-9]</td></tr><tr><td>\s</td><td>匹配任意一个空白字符，等价于[\f\n\r\t\v]</td></tr><tr><td>\S</td><td>匹配除空白字符以外任何一个字符，等价于[^\f\n\r\t\v]</td></tr><tr><td>\w</td><td>匹配任意一个数字、字母或下划线，等价于[0-9a-zA-Z]</td></tr><tr><td>\W</td><td>匹配除数字、字母或下划线以外的任意一个字符，等价于[^0-9a-zA-Z]</td></tr><tr><td>*</td><td>匹配0次、1次或多次其前面的原子</td></tr><tr><td>+</td><td>匹配1次或多次其前面的原子</td></tr><tr><td>?</td><td></td></tr><tr><td>.</td><td></td></tr><tr><td>|</td><td></td></tr><tr><td>{n}</td><td></td></tr><tr><td>{n,}</td><td></td></tr><tr><td>{n,m}</td><td></td></tr><tr><td>^或\A</td><td></td></tr><tr><td>$或\Z</td><td></td></tr><tr><td>\b</td><td></td></tr><tr><td>\B</td><td></td></tr><tr><td>[]</td><td></td></tr><tr><td>[^]</td><td></td></tr><tr><td>()</td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -198,44 +223,6 @@
             <tag> web安全 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>无题</title>
-      <link href="/post/9b44950b.html"/>
-      <url>/post/9b44950b.html</url>
-      
-        <content type="html"><![CDATA[<span id="more"></span><blockquote><p>你路过我的春光明媚</p><p>离开我的望穿秋水</p><p>当雾气锁住凝眉</p><p>当笛声告别夕炊</p><p>最好你舍得我送别的眼</p><p>从此一去不回</p><p>最好我忘掉你流水的心</p><p>再无浊酒一杯</p><p>当我赶起羊群踏尽青草</p><p>当你忘了路过此地朝朝暮暮</p><p>天晓得柔情似水</p><p>妄想谁泪眼愁眉</p><p>等到所有的故事都死去</p><p>我爱过的人都成灰</p><p>有的变成河水</p><p>有的变成眼泪</p><p>该请谁来聆听</p><p>荒野的风声吹向月亮</p><p>我心如荒野    凛风不歇</p><p>该请谁来触及</p><p>青山的恻隐藏了四季</p><p>我身如青山    瘦贫瘠该</p><p>请谁来抵达</p><p>镜中青花结成了白发</p><p>我灵魂如镜    虚罄年华</p><p>该请谁来行歌</p><p>长河两侧的落落景色</p><p>我生如长河    终生奔波</p><p>终生    一无所获</p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 我同桌的文集 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 文集 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World！</title>
-      <link href="/post/24608.html"/>
-      <url>/post/24608.html</url>
-      
-        <content type="html"><![CDATA[<span id="more"></span><p>去没人的岛，摸鲨鱼的角。</p>]]></content>
-      
-      
       
     </entry>
     
