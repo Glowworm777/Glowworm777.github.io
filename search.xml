@@ -4,11 +4,36 @@
   
     
     <entry>
-      <title>web安全补充</title>
-      <link href="/post/e3a6827a.html"/>
-      <url>/post/e3a6827a.html</url>
+      <title>web补充</title>
+      <link href="/post/4f0386b5.html"/>
+      <url>/post/4f0386b5.html</url>
       
-        <content type="html"><![CDATA[<span id="more"></span><h1 id="web基础"><a href="#web基础" class="headerlink" title="web基础"></a>web基础</h1><h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><h1 id="RCE（远程代码执行）"><a href="#RCE（远程代码执行）" class="headerlink" title="RCE（远程代码执行）"></a>RCE（远程代码执行）</h1><h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h1 id="SSRF（服务器请求伪造）"><a href="#SSRF（服务器请求伪造）" class="headerlink" title="SSRF（服务器请求伪造）"></a>SSRF（服务器请求伪造）</h1>]]></content>
+        <content type="html"><![CDATA[<span id="more"></span><h1 id="web基础"><a href="#web基础" class="headerlink" title="web基础"></a>web基础</h1><h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><h1 id="RCE（远程代码执行）"><a href="#RCE（远程代码执行）" class="headerlink" title="RCE（远程代码执行）"></a>RCE（远程代码执行）</h1><h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h1 id="SSRF（服务器请求伪造）"><a href="#SSRF（服务器请求伪造）" class="headerlink" title="SSRF（服务器请求伪造）"></a>SSRF（服务器请求伪造）</h1><h1 id="PHP特性"><a href="#PHP特性" class="headerlink" title="PHP特性"></a>PHP特性</h1><h1 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web基础知识</title>
+      <link href="/post/37e3a6bf.html"/>
+      <url>/post/37e3a6bf.html</url>
+      
+        <content type="html"><![CDATA[<span id="more"></span><h1 id="常见端口"><a href="#常见端口" class="headerlink" title="常见端口"></a>常见端口</h1><table><thead><tr><th>端口号</th><th>服务</th></tr></thead><tbody><tr><td>21</td><td>21端口主要用于FTP（File Transfer Protocol，文件传输协议）服务。</td></tr><tr><td>22</td><td>ssh 服务，能够防止DNS和IP欺骗。</td></tr><tr><td>23</td><td>23端口主要用于Telnet（远程登录）服务</td></tr><tr><td>53</td><td>为DNS服务器所开放，主要用于域名解析</td></tr><tr><td>80</td><td>为HTTP开放的，这是上网使用最多的协议</td></tr><tr><td>443</td><td>网页浏览端口，主要是用于HTTPS服务</td></tr><tr><td>3306</td><td>mysql数据库</td></tr><tr><td>4000</td><td>为QQ客户端开放的端口，QQ服务端使用的端口是8000</td></tr><tr><td>3389</td><td>远程桌面的服务端口（RDP）</td></tr><tr><td>6379</td><td>redis协议端口号</td></tr><tr><td>8080</td><td>8080端口同80端口，是被用于WWW代理服务的</td></tr></tbody></table>]]></content>
       
       
       <categories>
